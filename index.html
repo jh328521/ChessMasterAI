@@ -1,1 +1,67 @@
 
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ChessMasterAI</title>
+<style>
+body {
+  background: #151923;
+  color: white;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 15px;
+}
+h1 {
+  color: #61dafb;
+}
+#board {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  width: min(90vw, 420px);
+  margin: 20px auto;
+  border: 3px solid #444;
+}
+.square {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(24px, 8vw, 42px);
+}
+.light { background: #eee; }
+.dark { background: #769656; }
+</style>
+</head>
+<body>
+
+<h1>♟ ChessMasterAI</h1>
+<p>나만의 AI 체스 코치</p>
+
+<div id="board"></div>
+<div id="status">백의 차례</div>
+<script>
+const board = document.getElementById("board");
+
+const pieces = [
+"♜","♞","♝","♛","♚","♝","♞","♜",
+"♟","♟","♟","♟","♟","♟","♟","♟",
+"","","","","","","","",
+"","","","","","","","",
+"","","","","","","","",
+"","","","","","","","",
+"♙","♙","♙","♙","♙","♙","♙","♙",
+"♖","♘","♗","♕","♔","♗","♘","♖"
+];for(let i=0; i<64; i++){
+  const square = document.createElement("div");
+
+  square.className = "square " +
+    (Math.floor(i/8)%2 === i%2 ? "light" : "dark");
+
+  square.textContent = pieces[i];
+  board.appendChild(square);
+}
+</script>
+</body>
+</html>
